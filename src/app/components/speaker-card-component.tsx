@@ -21,14 +21,13 @@ export default function SpeakerCardComponent({ name, role, image, description, m
         fill={true}
       />
 
-      <div className="relative p-4 sm:p-6 lg:p-8">
-        <p className="text-sm font-medium uppercase tracking-widest text-secondary">{role}</p>
-
+      <div className="relative py-4 px-4 lg:py-8 lg:px-4">
+        <p className="text-sm font-medium uppercase tracking-widest text-primary bg-black w-fit px-1">{role}</p>
         <p className="text-xl font-bold text-white sm:text-2xl">{name}</p>
 
         <div className="mt-32 sm:mt-48 lg:mt-64">
-          <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-            <p className="text-sm text-white">{description}</p>
+          <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 speaker-mobile-hover">
+            <p className="text-md sm:text-sm lg:text-lg text-white">{description}</p>
           </div>
         </div>
       </div>

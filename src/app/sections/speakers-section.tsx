@@ -19,7 +19,7 @@ const speakers = [
 
 export default function SpeakersSection() {
   return (
-    <section className="max-w-7xl mx-4 lg:mx-auto pt-20 lg:pt-40">
+    <section className="max-w-7xl mx-4 lg:mx-auto py-10 lg:py-20">
       <h1 className="text-white text-4xl lg:text-7xl font-bold text-center mb-6 lg:mb-10">Palestrantes</h1>
       <div className="w-full flex flex-wrap justify-around items-center">
         {speakers.map((speaker, index) => (
