@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { PageLayout } from '@/app/components';
-import { HeroSection, SpeakersSection } from './sections';
-import FooterSection from './sections/footer-section';
+import { HeroSection, SpeakersSection, FooterSection } from '@/app/sections';
 
 export const metadata: Metadata = {
   title: 'RP.js',
