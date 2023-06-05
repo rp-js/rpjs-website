@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Modal } from 'antd';
 import { Dispatch, Fragment, SetStateAction } from 'react';
-import ButtonComponent from './button-component';
+import { Button } from './button';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -30,13 +30,13 @@ export default function LoginModal({ isOpen, setIsOpen }: LoginModalProps) {
         cliques.
       </p>
       <div className="flex flex-col gap-3 mt-4">
-        <ButtonComponent type="button" button="primary" onClick={closeModal}>
+        <Button type="button" button="primary" onClick={closeModal}>
           Entrar com o Google
-        </ButtonComponent>
+        </Button>
 
-        <ButtonComponent type="button" button="primary" onClick={closeModal}>
+        <Button type="button" button="primary" onClick={closeModal}>
           Entrar com o GitHub
-        </ButtonComponent>
+        </Button>
       </div>
     </Modal>
   );
