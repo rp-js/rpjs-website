@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_Id      String       @id @default(auto()) @map("_id") @db.ObjectId
+  firstname    String
+  surname      String
+  nickname     String
+  email        String
+  phone_number String
+  password     String
+  user_role    User_Roles[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  event_id    String @id @default(auto()) @map("_id") @db.ObjectId
+  event_name  String
+  description String
+  date        String
+  adress      String
+  latitude    String
+  longitude   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User_Roles {
+  role_id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  role        String
+  User        User?   @relation(fields: [userUser_Id], references: [user_Id])
+  userUser_Id String? @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subscription {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  eventId String @db.ObjectId
+}
+
+model Speakers {
+  speaker_id    String @id @default(auto()) @map("_id") @db.ObjectId
+  eventId       String @db.ObjectId
+  speaker_name  String
+  speaker_image String
+  title         String
+  description   String
+  media         String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
