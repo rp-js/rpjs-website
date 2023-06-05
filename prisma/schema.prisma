@@ -11,54 +11,73 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  user_Id      String       @id @default(auto()) @map("_id") @db.ObjectId
-  firstname    String
-  surname      String
-  nickname     String
-  email        String
-  phone_number String
-  password     String
-  user_role    User_Roles[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Users {
+  user_id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  first_name          String
+  surname             String
+  nickname            String   @unique
+  email               String   @unique
+  phone_number        String?
+  password            String
+  is_profile_complete Boolean
+  user_role           String  @db.ObjectId
+  created_at          DateTime
+  updated_at          DateTime
+
+  role          User_Roles      @relation(fields: [user_role], references: [role_id])
+  Subscriptions Subscriptions[]
 }
 
-model Event {
-  event_id    String @id @default(auto()) @map("_id") @db.ObjectId
+model Events {
+  event_id    String   @id @default(auto()) @map("_id") @db.ObjectId
   event_name  String
   description String
-  date        String
-  adress      String
-  latitude    String
-  longitude   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+  date        DateTime
+  address     String
+  schedule    String
+  latitude    String?
+  longitude   String?
+  created_at  DateTime
+  updated_at  DateTime
 
-model User_Roles {
-  role_id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  role        String
-  User        User?   @relation(fields: [userUser_Id], references: [user_Id])
-  userUser_Id String? @db.ObjectId
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Subscription {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  userId  String @db.ObjectId
-  eventId String @db.ObjectId
+  speakers      Speakers[]
+  subscriptions Subscriptions[]
 }
 
 model Speakers {
-  speaker_id    String @id @default(auto()) @map("_id") @db.ObjectId
-  eventId       String @db.ObjectId
+  speaker_id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  event_id      String  @db.ObjectId
   speaker_name  String
+  speaker_role  String
   speaker_image String
   title         String
   description   String
   media         String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  created_at    DateTime
+  updated_at    DateTime
+
+  event Events @relation(fields: [event_id], references: [event_id])
+}
+
+model Subscriptions {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id       String   @db.ObjectId
+  event_id      String   @db.ObjectId
+  is_remote     Boolean
+  ticket_number Int
+  ticket_url    String
+  created_at    DateTime
+  updated_at    DateTime
+
+  user  Users  @relation(fields: [user_id], references: [user_id])
+  event Events @relation(fields: [event_id], references: [event_id])
+}
+
+model User_Roles {
+  role_id    String   @id @default(auto()) @map("_id") @db.ObjectId
+  role       String   @unique
+  created_at DateTime
+  updated_at DateTime
+
+  users Users[]
 }
