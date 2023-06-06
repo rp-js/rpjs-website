@@ -1,6 +1,6 @@
 interface ButtonProps {
   children: React.ReactNode;
-  button: 'primary' | 'secondary';
+  button: 'primary' | 'secondary' | 'social';
   type: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   onClick?: () => void;
@@ -11,6 +11,8 @@ export function Button({ children, button, type, disabled, onClick }: ButtonProp
     primary: 'group relative inline-block font-bold text-black focus:outline-none',
     secondary:
       'font-sans py-2 px-4 rounded cursor-pointer shadow-md text-white font-bold bg-secondary border-secondary-color hover:bg-gradient-to-l hover:from-[#f05a28] hover:to-[#ec008c]',
+    social:
+      'flex justify-center items-center w-full h-10 bg-primary font-bold text-black focus:outline-none transition-colors duration-300 ease-in-out hover:bg-secondary',
   };
 
   return (
@@ -24,6 +26,7 @@ export function Button({ children, button, type, disabled, onClick }: ButtonProp
         </>
       )}
       {button === 'secondary' && children}
+      {button === 'social' && children}
     </button>
   );
 }

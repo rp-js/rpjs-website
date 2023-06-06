@@ -3,13 +3,14 @@
 import Image from 'next/image';
 import { Button } from '../button';
 import { useState } from 'react';
-// import LoginModal from './login-modal';
+import LoginModal from '../login-modal';
 
-export default function HeaderComponent() {
+export function Header() {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   function openModal() {
     setModalVisible(true);
+    document.body.style.overflow = 'hidden';
   }
 
   return (
@@ -38,7 +39,7 @@ export default function HeaderComponent() {
           </div>
         </div>
       </header>
-      {/* <LoginModal isOpen={modalVisible} setIsOpen={setModalVisible} /> */}
+      <LoginModal isOpen={modalVisible} setIsOpen={setModalVisible} />
     </>
   );
 }
