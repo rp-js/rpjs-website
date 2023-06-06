@@ -10,7 +10,7 @@ interface SpeakerProps {
 
 export function SpeakerCard({ name, role, image, title, media }: SpeakerProps) {
   return (
-    <a href={media} className="group relative bg-black w-full mb-6 lg:mb-10">
+    <a href={media} className="group relative bg-black mb-6 lg:mb-10">
       <Image
         alt={`${name} ${role}`}
         src={image}
