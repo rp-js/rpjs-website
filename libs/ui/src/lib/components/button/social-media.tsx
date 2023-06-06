@@ -9,7 +9,7 @@ interface SocialMediaButtonProps {
 
 export function SocialMediaButton({ title, socialMedia }: SocialMediaButtonProps) {
   return (
-    <div className="group relative inline-block rounded-full bg-secondary px-8 py-3 text-white">
+    <div className="group relative inline-block rounded-full bg-secondary px-10 py-3 text-white">
       <span className="font-bold transition-opacity group-hover:opacity-0">{title}</span>
 
       <ul className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 transition-opacity group-hover:opacity-100">

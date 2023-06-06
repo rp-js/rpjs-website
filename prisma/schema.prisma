@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -19,7 +19,7 @@ model Users {
   phone_number        String?
   password            String
   is_profile_complete Boolean
-  user_role           String  @db.ObjectId
+  user_role           String   @db.ObjectId
   created_at          DateTime
   updated_at          DateTime
 
@@ -45,7 +45,7 @@ model Events {
 
 model Speakers {
   speaker_id    String   @id @default(auto()) @map("_id") @db.ObjectId
-  event_id      String  @db.ObjectId
+  event_id      String   @db.ObjectId
   speaker_name  String
   speaker_role  String
   speaker_image String
