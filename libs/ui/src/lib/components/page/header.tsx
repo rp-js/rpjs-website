@@ -7,9 +7,11 @@ import { LoginModal } from '../login-modal';
 
 export function Header() {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<string>('');
 
-  function openModal() {
+  function openModal(type: string) {
     setModalVisible(true);
+    setModalType(type);
     document.body.style.overflow = 'hidden';
   }
 
@@ -29,14 +31,29 @@ export function Header() {
               <div className="text-black font-sans font-bold text-xl hidden md:block">RP.js</div>
             </div>
             <div className="ml-4 flex items-center md:ml-6 gap-3">
-              <Button button="secondary" type="button" onClick={openModal}>
+              <Button
+                button="secondary"
+                type="button"
+                onClick={() => {
+                  openModal('Entre');
+                }}
+              >
                 Entrar
+              </Button>
+              <Button
+                button="primary"
+                type="button"
+                onClick={() => {
+                  openModal('Registre-se');
+                }}
+              >
+                Registrar
               </Button>
             </div>
           </div>
         </div>
       </header>
-      <LoginModal isOpen={modalVisible} setIsOpen={setModalVisible} />
+      <LoginModal isOpen={modalVisible} setIsOpen={setModalVisible} modalType={modalType} />
     </>
   );
 }

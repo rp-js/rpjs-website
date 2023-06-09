@@ -9,6 +9,7 @@ import { useRandomImage } from '../../hooks/random-image';
 
 interface LoginModalProps {
   isOpen: boolean;
+  modalType: string;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -18,8 +19,8 @@ const images = [
     altText: 'Garota acessando sua conta em um celular.',
   },
   {
-    source: '/login-svgs/wn.svg',
-    altText: 'Mulher acessando sua oman-logiconta em um celular.',
+    source: '/login-svgs/woman-login.svg',
+    altText: 'Mulher acessando sua conta em um celular.',
   },
   {
     source: '/login-svgs/boy-login.svg',
@@ -35,7 +36,7 @@ const images = [
   },
 ];
 
-export function LoginModal({ isOpen, setIsOpen }: LoginModalProps) {
+export function LoginModal({ isOpen, setIsOpen, modalType }: LoginModalProps) {
   const { image, nextImage } = useRandomImage(images);
 
   function closeModal() {
@@ -52,11 +53,11 @@ export function LoginModal({ isOpen, setIsOpen }: LoginModalProps) {
   return (
     <Modal centered okType="default" open={isOpen} onOk={closeModal} onCancel={closeModal} footer={null}>
       <div className=" py-5">
-        <h1 className="font-bold  text-3xl mb-8 text-center">Entre no RP.Js!</h1>
+        <h1 className="font-bold  text-3xl mb-8 text-center">{modalType} no RP.Js!</h1>
         <Image className="flex-shrink-0 mx-auto mb-4" src={image.source} alt={image.altText} width={300} height={300} />
         <div className="flex justify-center items-center w-full flex-col gap-3 mt-8">
-          <GoogleButton />
-          <GithubButton />
+          <GoogleButton type={modalType} />
+          <GithubButton type={modalType} />
         </div>
       </div>
     </Modal>

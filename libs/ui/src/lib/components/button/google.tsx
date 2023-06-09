@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-export function GoogleButton() {
+interface GoogleButtonProps {
+  type: string;
+}
+
+export function GoogleButton({ type }: GoogleButtonProps) {
   return (
     <button className="px-4 py-2 w-4/5 w- border flex items-center gap-2 border-slate-300 rounded-lg text-slate-700 font-bold hover:border-slate-200 hover:shadow transition duration-150">
       <Image
@@ -11,7 +15,7 @@ export function GoogleButton() {
         height={20}
         loading="lazy"
       />
-      <span className="block text-left">Entre com o Google</span>
+      <span className="block text-left">{type} com o Google</span>
     </button>
   );
 }
