@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Button } from '../button';
 import { useState } from 'react';
-import LoginModal from '../login-modal';
+import { LoginModal } from '../login-modal';
 
 export function Header() {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
@@ -31,9 +31,6 @@ export function Header() {
             <div className="ml-4 flex items-center md:ml-6 gap-3">
               <Button button="secondary" type="button" onClick={openModal}>
                 Entrar
-              </Button>
-              <Button button="primary" type="button">
-                Registrar
               </Button>
             </div>
           </div>
