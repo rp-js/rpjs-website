@@ -31,13 +31,6 @@ const speakers: Array<Speaker> = [
     title: 'Fodao e fodinha',
     media: 'https://github.com/DouglasSerafim',
   },
-  {
-    name: 'Ítalo Covas',
-    role: 'Frontend Developer',
-    image: 'https://github.com/ItaloCovas.png',
-    title: 'Desenvolvedor Frontend na Framework Digital',
-    media: 'https://github.com/ItaloCovas',
-  },
 ];
 
 export function SpeakersSection() {
