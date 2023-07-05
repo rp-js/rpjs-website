@@ -24,7 +24,7 @@ export function Button({ children, button, type, disabled, onClick }: ButtonProp
         </>
       )}
 
-      {button !== 'secondary' && children}
+      {button === 'secondary' && children}
     </button>
   );
 }
