@@ -23,6 +23,7 @@ export function Button({ children, button, type, disabled, onClick }: ButtonProp
           </span>
         </>
       )}
+
       {button === 'secondary' && children}
     </button>
   );
