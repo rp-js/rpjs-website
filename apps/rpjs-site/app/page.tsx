@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     {
       name: 'Pedro Brilhadori',
     },
+    {
+      name: 'Ítalo Covas',
+      url: 'https://github.com/ItaloCovas',
+    },
   ],
 };
 
