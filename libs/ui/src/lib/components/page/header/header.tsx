@@ -1,19 +1,31 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from '../button';
 import { useState } from 'react';
-import { LoginModal } from '../login-modal';
+import { signIn, signOut } from 'next-auth/react';
+
+import { LoginModal } from '../../login-modal';
+import { HeaderAction } from './header-actions';
+
+const loginModalAction = (type: 'google' | 'github') => {
+  if (type === 'google') {
+    return signIn('google');
+  }
+
+  if (type === 'github') {
+    return signIn('github');
+  }
+};
 
 export function Header() {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [modalType, setModalType] = useState<string>('');
 
-  function openModal(type: string) {
+  const openModal = (type: string) => {
     setModalVisible(true);
     setModalType(type);
     document.body.style.overflow = 'hidden';
-  }
+  };
 
   return (
     <>
@@ -30,30 +42,23 @@ export function Header() {
               />
               <div className="text-black font-sans font-bold text-xl hidden md:block">RP.js</div>
             </div>
-            <div className="ml-4 flex items-center md:ml-6 gap-3">
-              <Button
-                button="secondary"
-                type="button"
-                onClick={() => {
-                  openModal('Entre');
-                }}
-              >
-                Entrar
-              </Button>
-              <Button
-                button="primary"
-                type="button"
-                onClick={() => {
-                  openModal('Registre-se');
-                }}
-              >
-                Registrar
-              </Button>
-            </div>
+
+            <HeaderAction
+              openModal={openModal}
+              onSignOutClick={() => {
+                signOut();
+              }}
+            />
           </div>
         </div>
       </header>
-      <LoginModal isOpen={modalVisible} setIsOpen={setModalVisible} modalType={modalType} />
+
+      <LoginModal
+        isOpen={modalVisible}
+        setIsOpen={setModalVisible}
+        modalType={modalType}
+        onLoginClick={loginModalAction}
+      />
     </>
   );
 }

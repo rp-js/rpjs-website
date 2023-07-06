@@ -6,8 +6,7 @@ export const metadata: Metadata = {
   title: 'RP.js',
   description: 'Página da comunidade de JavaScript de Ribeirão Preto!',
   applicationName: 'RP.js',
-  keywords:
-    'javascript, ribeirão preto, comunidade, meetup, evento, programação, js, rp, rp.js',
+  keywords: 'javascript, ribeirão preto, comunidade, meetup, evento, programação, js, rp, rp.js',
   icons: '/logo.svg',
   authors: [
     {
@@ -19,6 +18,11 @@ export const metadata: Metadata = {
     },
     {
       name: 'Pedro Brilhadori',
+      url: 'ht',
+    },
+    {
+      name: 'Ítalo Covas',
+      url: 'https://github.com/ItaloCovas',
     },
     {
       name: 'Ítalo Covas',
