@@ -11,6 +11,7 @@ interface LoginModalProps {
   isOpen: boolean;
   modalType: string;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  onLoginClick?: (type: 'github' | 'google') => void;
 }
 
 const images = [
@@ -36,7 +37,7 @@ const images = [
   },
 ];
 
-export function LoginModal({ isOpen, setIsOpen, modalType }: LoginModalProps) {
+export function LoginModal({ isOpen, setIsOpen, modalType, onLoginClick }: LoginModalProps) {
   const { image, nextImage } = useRandomImage(images);
 
   function closeModal() {
@@ -56,8 +57,8 @@ export function LoginModal({ isOpen, setIsOpen, modalType }: LoginModalProps) {
         <h1 className="font-bold  text-3xl mb-8 text-center">{modalType} no RP.Js!</h1>
         <Image className="flex-shrink-0 mx-auto mb-4" src={image.source} alt={image.altText} width={300} height={300} />
         <div className="flex justify-center items-center w-full flex-col gap-3 mt-8">
-          <GoogleButton type={modalType} />
-          <GithubButton type={modalType} />
+          <GoogleButton type={modalType} onClick={onLoginClick} />
+          <GithubButton type={modalType} onClick={onLoginClick} />
         </div>
       </div>
     </Modal>

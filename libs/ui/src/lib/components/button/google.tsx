@@ -2,11 +2,14 @@ import Image from 'next/image';
 
 interface GoogleButtonProps {
   type: string;
+  onClick?: (type: 'google') => void;
 }
 
-export function GoogleButton({ type }: GoogleButtonProps) {
+export function GoogleButton({ type, onClick }: GoogleButtonProps) {
+  const className = `px-4 py-2 w-4/5 w- border flex items-center gap-2 border-slate-300 rounded-lg text-slate-700 font-bold hover:border-slate-200 hover:shadow transition duration-150`;
+
   return (
-    <button className="px-4 py-2 w-4/5 w- border flex items-center gap-2 border-slate-300 rounded-lg text-slate-700 font-bold hover:border-slate-200 hover:shadow transition duration-150">
+    <button className={className} onClick={() => (onClick ? onClick('google') : null)}>
       <Image
         className="mr-2"
         src="https://www.svgrepo.com/show/355037/google.svg"
